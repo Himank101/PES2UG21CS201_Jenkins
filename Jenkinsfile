@@ -5,7 +5,6 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // Compile the .cpp file using a shell script
                     build 'PES2UG21CS201-1'
                     sh 'g++ -o my_program task5.cpp'
                 }
@@ -15,7 +14,6 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    // Print output of .cpp file using a shell script
                     sh './my_program'
                 }
             }
@@ -23,7 +21,6 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                // Add deployment steps here if needed
                 echo 'Deploy'
             }
         }
@@ -31,7 +28,6 @@ pipeline {
 
     post {
         always {
-            // Display 'pipeline failed' in case of any errors within the pipeline
             script {
                 if (currentBuild.result == 'FAILURE') {
                     echo 'Pipeline failed'
@@ -40,3 +36,4 @@ pipeline {
         }
     }
 }
+
